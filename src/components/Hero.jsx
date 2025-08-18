@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const Hero = () => {
@@ -16,7 +15,7 @@ const Hero = () => {
         </div>
       </div>
       <div className="hero-image">
-        <img src="/images/housing.png" alt="Modern houses" />
+        <img src={`${import.meta.env.BASE_URL}images/housing.png`} alt="Modern houses" />
       </div>
     </div>
   );
