@@ -1,31 +1,18 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-// NOTE: The useAuth hook has been temporarily removed to resolve a dependency issue.
-// You can re-integrate it by uncommenting the relevant lines once your AuthContext is available.
-// import { useAuth } from '../context/AuthContext.jsx';
-
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  // const { logout } = useAuth(); // Uncomment when AuthContext is ready
   const navigate = useNavigate();
 
-  // Handles logout action
   const handleLogout = () => {
-    // logout(); // Uncomment when AuthContext is ready
-    navigate('/login'); // Redirect to login page after logout
+    navigate('/login');
   };
 
-  // Navigates to the Contact Us page
-  const handleNavigateToContact = () => {
-    navigate('/contact-us');
-    setIsMenuOpen(false); // Close mobile menu after navigation
-  };
-
-  // Navigates to the About Us page
-  const handleNavigateToAbout = () => {
-    navigate('/AboutUs'); // This path must match your route in App.js
-    setIsMenuOpen(false); // Close mobile menu after navigation
+  // Function to handle all navigation clicks
+  const handleNavigate = (path) => {
+    navigate(path);
+    setIsMenuOpen(false); // Close mobile menu after clicking
   };
 
   return (
@@ -34,39 +21,54 @@ const Navigation = () => {
         <h1>Brickland Consulting</h1>
       </div>
 
-      {/* Hamburger menu for mobile */}
       <div className="hamburger" onClick={() => setIsMenuOpen(!isMenuOpen)}>
         <div className="line"></div>
         <div className="line"></div>
         <div className="line"></div>
       </div>
 
-      {/* Navigation Links */}
       <ul className={isMenuOpen ? "nav-links open" : "nav-links"}>
-        <li><a href="#">Listings</a></li>
-        <li><a href="#">Neighborhoods</a></li>
-        
-        {/* About Us Link */}
+        {/* --- HOME BUTTON ADDED HERE --- */}
         <li>
-          <button onClick={handleNavigateToAbout} className="nav-button">
+          <button onClick={() => handleNavigate('/')} className="nav-button">
+            Home
+          </button>
+        </li>
+        <li>
+          <button onClick={() => handleNavigate('/dashboard')} className="nav-button">
+            Dashboard
+          </button>
+        </li>
+        <li>
+          <button onClick={() => handleNavigate('/search')} className="nav-button">
+            Search
+          </button>
+        </li>
+        <li>
+          <button onClick={() => handleNavigate('/listings')} className="nav-button">
+            Listings
+          </button>
+        </li>
+        <li>
+          <button onClick={() => handleNavigate('/neighborhoods')} className="nav-button">
+            Neighborhoods
+          </button>
+        </li>
+        <li>
+          <button onClick={() => handleNavigate('/AboutUs')} className="nav-button">
             About Us
           </button>
         </li>
-
-        {/* Contact Us Link */}
         <li>
-          <button onClick={handleNavigateToContact} className="nav-button">
+          <button onClick={() => handleNavigate('/contact-us')} className="nav-button">
             Contact Us
           </button>
         </li>
-        
-        {/* Logout button for mobile view */}
         <li className="login-btn-mobile">
           <button onClick={handleLogout} className="login-btn">Logout</button>
         </li>
       </ul>
 
-      {/* Logout button for desktop view */}
       <button onClick={handleLogout} className="login-btn login-btn-desktop">
         Logout
       </button>

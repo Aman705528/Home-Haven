@@ -149,15 +149,20 @@ nav {
   margin: 0;
 }
 
-.nav-links a {
+.nav-links .nav-button {
+  background: none;
+  border: none;
+  cursor: pointer;
   text-decoration: none;
   color: #4a5568;
   font-weight: 600;
   position: relative;
   padding: 5px 0;
+  font-size: 16px;
+  font-family: inherit;
 }
 
-.nav-links a::after {
+.nav-links .nav-button::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -168,7 +173,7 @@ nav {
   transition: width 0.3s ease;
 }
 
-.nav-links a:hover::after {
+.nav-links .nav-button:hover::after {
   width: 100%;
 }
 
@@ -301,7 +306,7 @@ nav {
   }
 
   .nav-links.open {
-    max-height: 300px; /* Adjust as needed */
+    max-height: 500px; /* Adjust as needed */
     padding: 20px 0;
   }
 
@@ -316,4 +321,8 @@ nav {
   .login-btn-mobile {
     display: block;
   }
+}
+/* General Layout Spacing */
+.main-content {
+  padding: 2rem 1rem; /* Adds space above/below and on the sides */
 }
