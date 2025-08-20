@@ -12,6 +12,8 @@ import Login from './components/Login.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
 import Dashboard from './components/Dashboard.jsx';
 import HomePage from './components/HomePage.jsx';
+import ContactUs from './components/ContactUs.jsx';
+import AboutUs from './components/AboutUs.jsx';
 import './App.css';
 
 function App() {
@@ -21,7 +23,7 @@ function App() {
         <Routes>
           {/* Public Route: Only the login page is public */}
           <Route path="/login" element={<Login />} />
-
+          
           {/* Protected Routes: All other pages are now protected */}
           <Route
             path="/"
@@ -39,7 +41,27 @@ function App() {
               </ProtectedRoute>
             }
           />
-
+          
+          {/* Contact Us page */}
+          <Route
+            path="/contact-us"
+            element={
+              <ProtectedRoute>
+                <ContactUs />
+              </ProtectedRoute>
+            }
+          />
+          
+          {/* About Us page - keeping only one route */}
+          <Route
+            path="/AboutUs"
+            element={
+              <ProtectedRoute>
+                <AboutUs />
+              </ProtectedRoute>
+            }
+          />
+          
           {/* Redirect any unknown path to the main page, which will then check for auth */}
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>

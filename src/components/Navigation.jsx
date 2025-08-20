@@ -12,6 +12,12 @@ const Navigation = () => {
     navigate('/login'); // Redirect to login page after logout
   };
 
+  // Function to handle navigation to the contact page
+  const handleNavigateToContact = () => {
+    navigate('/contact-us'); // Assumes your route is '/contact-us'
+    setIsMenuOpen(false); // Close the menu on mobile after clicking
+  };
+
   return (
     <nav className="container">
       <div className="logo">
@@ -26,7 +32,12 @@ const Navigation = () => {
         <li><a href="#">Listings</a></li>
         <li><a href="#">Neighborhoods</a></li>
         <li><a href="#">About Us</a></li>
-        <li><a href="#">Contact</a></li>
+        {/* Updated Contact Us link */}
+        <li>
+          <button onClick={handleNavigateToContact} className="nav-button">
+            Contact Us
+          </button>
+        </li>
         <li className="login-btn-mobile">
           <button onClick={handleLogout} className="login-btn">Logout</button>
         </li>
